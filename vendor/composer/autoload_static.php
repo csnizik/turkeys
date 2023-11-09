@@ -168,6 +168,7 @@ class ComposerStaticInit6a8c31e5539789f1d6d7ea223ebfa7f2
         'D' => 
         array (
             'Drush\\' => 6,
+            'Drupal\\csv_importer\\' => 20,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
             'Drupal\\Component\\' => 17,
@@ -213,8 +214,8 @@ class ComposerStaticInit6a8c31e5539789f1d6d7ea223ebfa7f2
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'phootwork\\lang\\' => 
         array (
@@ -553,6 +554,10 @@ class ComposerStaticInit6a8c31e5539789f1d6d7ea223ebfa7f2
         'Drush\\' => 
         array (
             0 => __DIR__ . '/..' . '/drush/drush/src',
+        ),
+        'Drupal\\csv_importer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/web/modules/csv_importer/src',
         ),
         'Drupal\\Core\\' => 
         array (

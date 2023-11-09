@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'farmos/project',
-        'pretty_version' => '3.x-dev',
-        'version' => '3.9999999.9999999.9999999-dev',
-        'reference' => 'fd3e7f18add9647d671862bb7726e0a713f817b8',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -424,6 +424,15 @@
                 0 => '10.1.6',
             ),
         ),
+        'drupal/csv_importer' => array(
+            'pretty_version' => '1.16.0',
+            'version' => '1.16.0.0',
+            'reference' => '8.x-1.16',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/csv_importer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/csv_serialization' => array(
             'pretty_version' => '4.0.0',
             'version' => '4.0.0.0',
@@ -731,9 +740,9 @@
             'dev_requirement' => false,
         ),
         'farmos/project' => array(
-            'pretty_version' => '3.x-dev',
-            'version' => '3.9999999.9999999.9999999-dev',
-            'reference' => 'fd3e7f18add9647d671862bb7726e0a713f817b8',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

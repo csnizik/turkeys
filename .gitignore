@@ -17,8 +17,9 @@ web/sites/default/files/config_*
 # Ignore contributed modules and themes
 web/sites/default/modules/contrib/
 web/sites/default/themes/contrib/
-web/modules/contrib
+web/modules
 web/th
+!web/modules/custom/
 
 # Ignore default files folder
 web/sites/default/files/
@@ -35,7 +36,7 @@ web/sites/*/files/php/
 *.log
 
 # Ignore Composer vendor folder
-vendor/
+www/vendor/
 
 # Ignore Node.js dependency folder
 node_modules/
