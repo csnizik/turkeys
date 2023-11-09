@@ -55,12 +55,14 @@
     title_display not in ['after', 'before'] ? 'form-no-label',
     disabled == 'disabled' ? 'form-disabled',
     errors ? 'form-item--error',
+    'fsa-field',
   ]
 %}
 {%
   set description_classes = [
     'description',
     description_display == 'invisible' ? 'visually-hidden',
+    'fsa-field__message'
   ]
 %}
 <div{{ attributes.addClass(classes) }}>

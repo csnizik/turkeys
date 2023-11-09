@@ -10,6 +10,11 @@
  * @see template_preprocess_form()
  */
 #}
+<div class="fsa-box fsa-box--br-2">
 <form{{ attributes }}>
+{% if attributes.id == "node-awardee-org-form" %}
+ <h2>Organization Information</h2>
+ {% endif %}
   {{ children }}
 </form>
+</div>

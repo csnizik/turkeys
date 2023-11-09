@@ -19,3 +19,33 @@ function fpac_theme_preprocess_image_widget(array &$variables) {
     unset($data['preview']);
   }
 }
+
+/**
+ * Implements hook_preprocess_HOOK() for select.html.twig.
+ */
+function fpac_theme_preprocess_input(&$variables) {
+  if (isset($variables['attributes']['type']) && $variables['attributes']['type'] == 'text') {
+    // Add a class to the text input element.
+    $variables['attributes']['class'][] = 'fsa-input fsa-field__item';
+  }
+
+  // Check if 'type' is set to 'submit' and then add classes based on the 'value'.
+  if (isset($variables['attributes']['type']) && $variables['attributes']['type'] == 'submit') {
+    if (isset($variables['attributes']['value'])) {
+      if ($variables['attributes']['value'] == 'Save') {
+        $variables['attributes']['class'][] = 'fsa-btn';
+      } elseif ($variables['attributes']['value'] == 'Preview') {
+        $variables['attributes']['class'][] = 'fsa-btn fsa-btn--secondary';
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_preprocess_HOOK() for select.html.twig.
+ */
+function fpac_theme_preprocess_select(&$variables) {
+  $variables['attributes']['class'][] = 'fsa-select fsa-field__item';
+
+}
