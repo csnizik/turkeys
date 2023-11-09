@@ -22,7 +22,7 @@ web/th
 !web/modules/custom/
 
 # Ignore default files folder
-web/sites/default/files/
+# web/sites/default/files/
 
 # Ignore cache and temporary files
 web/sites/*/files/css/
