@@ -21,7 +21,7 @@ const PracticeDetailReport = ({ practiceCode, checkTableauIsEmpty }: any) => {
   );
 
   const stateAbbr =
-    stateAbbrInRedux === 'U.S.' || stateAbbrInRedux === undefined
+    stateAbbrInRedux === 'National' || stateAbbrInRedux === undefined
       ? ''
       : stateAbbrInRedux;
 

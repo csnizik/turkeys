@@ -219,9 +219,11 @@ const ReportBuilder = ({
             className='usa-checkbox__input'
             id='currentPracticeSupport'
             type='checkbox'
-            aria-label={`Support for the ${
-              reportPreviewData?.practiceName
-            } Practice in ${stateName === 'U.S.' ? 'the U.S.' : stateName}`}
+            aria-label={
+              stateName === 'National'
+                ? `National Support for the ${reportPreviewData?.practiceName} Practice`
+                : `Support for the ${reportPreviewData?.practiceName} Practice in ${stateName}`
+            }
             name='currentPracticeSupport'
             value={1}
             onChange={handleInput}
@@ -230,9 +232,9 @@ const ReportBuilder = ({
             className='usa-checkbox__label'
             htmlFor='currentPracticeSupport'
           >
-            {`Support for the ${reportPreviewData?.practiceName} Practice in ${
-              stateName === 'U.S.' ? 'the U.S.' : stateName
-            }`}
+            {stateName === 'National'
+              ? `National Support for the ${reportPreviewData?.practiceName} Practice`
+              : `Support for the ${reportPreviewData?.practiceName} Practice in ${stateName}`}
           </label>
         </div>
 
@@ -252,7 +254,7 @@ const ReportBuilder = ({
         </div>
 
         <div className='builder-title'>
-          {stateName === 'U.S.' ? 'The U.S.' : stateName}{' '}
+          {stateName === 'National' ? 'National' : stateName}{' '}
           {'Projects & Initiatives Using the '}
           {reportPreviewData?.practiceName}
           {' practice'}

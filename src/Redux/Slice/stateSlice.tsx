@@ -7,9 +7,9 @@ interface IState {
 }
 
 export const initialState = {
-  stateNameDisplay: 'U.S.',
+  stateNameDisplay: 'National',
   stateCode: '00',
-  stateAbbreviation: 'U.S.',
+  stateAbbreviation: 'National',
 } as IState;
 
 /* eslint-disable no-param-reassign */

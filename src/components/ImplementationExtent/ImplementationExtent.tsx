@@ -38,15 +38,13 @@ const ImplementationExtent = ({
 
   const uiText: any = useAppSelector(
     (state) => (state?.staticTextSlice?.staticData as any)?.data
-  ); 
-  
+  );
+
   const getHeaderText = () => {
     if (practiceName) {
-      return `${uiText?.cpDetailHeadingSupport?.configurationValue} for the ${practiceName} Practice in ${
-        stateInfo?.stateNameDisplay === 'U.S.'
-          ? 'the U.S.'
-          : stateInfo?.stateNameDisplay
-      }`;
+      return stateInfo?.stateNameDisplay === 'National'
+        ? `National ${uiText?.cpDetailHeadingSupport?.configurationValue} for the ${practiceName} Practice`
+        : `${uiText?.cpDetailHeadingSupport?.configurationValue} for the ${practiceName} Practice in ${stateInfo?.stateNameDisplay}`;
     }
     return practiceName;
   };
@@ -124,9 +122,14 @@ const ImplementationExtent = ({
         : `Current ${stateInfo?.stateNameDisplay} Payment Schedules | NRCS`;
     return (
       <div className='payment-schedule'>
-        <h3 id='payment-title'>{uiText?.cpDetailHeadingSupportSubheading?.configurationValue}</h3>
+        <h3 id='payment-title'>
+          {uiText?.cpDetailHeadingSupportSubheading?.configurationValue}
+        </h3>
         <p>
-          {uiText?.cpDetailHeadingSupportSubheadingDescription?.configurationValue}
+          {
+            uiText?.cpDetailHeadingSupportSubheadingDescription
+              ?.configurationValue
+          }
         </p>
         <div className='link'>
           <a

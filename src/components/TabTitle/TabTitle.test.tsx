@@ -34,6 +34,6 @@ describe('TabTitle is rendered correctly', () => {
   });
 
   test('Should display the state name', () => {
-    expect(screen.getByText('U.S.')).toBeInTheDocument();
+    expect(screen.getByText('National')).toBeInTheDocument();
   });
 });

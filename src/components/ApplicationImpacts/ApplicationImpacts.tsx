@@ -12,7 +12,7 @@ const ApplicationImpacts = ({ data, isSuccess }: IApplicationImpactProps) => {
   const getHeaderText = () => {
     const practiceName = (data && data?.practiceName) || '';
     if (practiceName) {
-      return `Impacts of Applying ${practiceName} in the U.S.`;
+      return `Impacts of Applying ${practiceName} in Nationally`;
     }
     return practiceName;
   };

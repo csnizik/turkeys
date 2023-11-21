@@ -44,7 +44,7 @@ const SearchOption = ({
     history.push(`/${stateCode}/${displayName.split(' ').join('')}`);
   };
   const getTabTitle = () => {
-    return `${selectedstate || 'U.S.'} ${displayName}`;
+    return `${selectedstate || 'National'} ${displayName}`;
   };
 
   return (

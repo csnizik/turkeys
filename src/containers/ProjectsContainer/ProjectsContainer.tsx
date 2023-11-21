@@ -182,7 +182,7 @@ const ProjectsContainer = () => {
                     onClick={() => handleSelectProjectItem(listItem.id)}
                     onKeyPress={() => handleSelectProjectItem(listItem.id)}
                   >
-                    {listItem.title === 'All U.S. Projects & Initiatives'
+                    {listItem.title === 'National Projects & Initiatives' && stateInfo?.stateNameDisplay !== 'National'
                       ? t(
                           `All ${stateInfo?.stateNameDisplay} Projects & Initiatives`
                         )

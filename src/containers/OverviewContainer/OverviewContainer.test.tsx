@@ -6,7 +6,7 @@ afterEach(() => {
 });
 
 describe('Overview container is rendered correctly', () => {
-  const stateNameDisplay = 'U.S.';
+  const stateNameDisplay = 'National';
   beforeEach(() => {
     render(<OverviewContainer stateNameDisplay={stateNameDisplay} />);
   });

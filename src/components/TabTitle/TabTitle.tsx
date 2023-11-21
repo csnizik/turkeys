@@ -4,7 +4,7 @@ import './tab-title.scss';
 const TabTitle = ({ stateName, currentTab }: any) => {
   const { category, individual }: any = useParams();
   const ariaTitleParse = () => {
-    const first = `${stateName || 'U.S.'}`;
+    const first = `${stateName || 'National'}`;
     let second: string;
     if (currentTab === 'Projects And Initiatives' && category === '1')
       second = 'Projects Page';
@@ -27,7 +27,7 @@ const TabTitle = ({ stateName, currentTab }: any) => {
     <div data-testid='tab-title'>
       <div className='tab-title-container'>
         <h1 className='tab-title-name' aria-label={ariaTitleParse()}>
-          {stateName || 'U.S.'} {currentTab}
+          {stateName || 'National'} {currentTab}
         </h1>
       </div>
     </div>

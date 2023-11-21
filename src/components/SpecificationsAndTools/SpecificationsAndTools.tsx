@@ -200,7 +200,7 @@ const SpecificationsAndTools = ({
       <h2>{getHeaderText()}</h2>
       <p>{uiText?.cpDetailHeadingToolsDescription?.configurationValue}</p>
       {renderNationalSpecs()}
-      {selectedStateName === 'U.S.' ? null : renderStateSpecs()}
+      {selectedStateName === 'National' ? null : renderStateSpecs()}
       {content?.data?.length ? renderAssociatedPractice() : null}
     </section>
   );

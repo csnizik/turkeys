@@ -16,7 +16,7 @@ const TopPracticesEQUIPOpenData = ({ setIsTableauEmpty }: any) => {
   let stateName = useAppSelector(
     (state: any) => state?.stateSlice?.stateNameDisplay
   );
-  if (stateName === 'U.S.' || stateName === undefined) stateName = 'National';
+  if (stateName === 'National' || stateName === undefined) stateName = 'National';
 
   const srcLink: string = `${uiText?.TopPracticesEQUIPOpenDataLink?.configurationValue}=${stateName}&:tabs=no`;
 

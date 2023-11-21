@@ -25,7 +25,7 @@ const ConservationPracticeCategory = ({ pageName, setIsTableauEmpty }: any) => {
     (state: any) => state?.stateSlice?.stateAbbreviation
   );
   const stateAbbr =
-    stateAbbrInRedux === 'U.S.' || stateAbbrInRedux === undefined
+    stateAbbrInRedux === 'National' || stateAbbrInRedux === undefined
       ? ''
       : stateAbbrInRedux;
   const srcLink: string = `${

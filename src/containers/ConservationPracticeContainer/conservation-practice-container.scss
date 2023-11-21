@@ -5,8 +5,12 @@
 
 .title-section {
   padding: 2.75rem 2.188rem 0;
-  .top-title .project-title{
-      font-weight: $heavier-weight;
-      font-size: $h2-font-size;
+  .top-title {
+    justify-content: flex-start;
+    margin-left: 0rem;
+    .project-title{
+        font-weight: $heavier-weight;
+        font-size: $h2-font-size;
+    }
   }
 }

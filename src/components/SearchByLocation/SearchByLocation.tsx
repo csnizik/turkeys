@@ -9,9 +9,9 @@ import './search-by-location.scss';
 import { currentState } from '../../Redux/Slice/stateSlice';
 
 const initialState = {
-  stateNameDisplay: 'U.S.',
+  stateNameDisplay: 'National',
   stateCode: '00',
-  stateAbbreviation: 'U.S.',
+  stateAbbreviation: 'National',
 };
 
 const SearchByLocation = ({ setSearchInput, setSearchInfo }: any) => {

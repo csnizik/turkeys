@@ -218,8 +218,8 @@ const ConservationPracticeContainer = ({
           <div className='title-section' data-testid='pratice-title'>
             <div className='top-title'>
               <h4 className='project-title'>
-                {stateInfo?.stateNameDisplay === 'U.S.'
-                  ? 'The U.S.'
+                {stateInfo?.stateNameDisplay === 'National'
+                  ? 'National'
                   : stateInfo?.stateNameDisplay}{' '}
                 {uiText?.cpDetailHeading5?.configurationValue}{' '}
                 {currentPractice?.practiceName}

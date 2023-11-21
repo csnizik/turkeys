@@ -28,9 +28,9 @@ import { useGetConfigurationSettingsStaticTextQuery } from '../../Redux/services
 import { setStaticText } from '../../Redux/Slice/staticTextSlice';
 
 const initialState = {
-  stateNameDisplay: 'U.S.',
+  stateNameDisplay: 'National',
   stateCode: '00',
-  stateAbbreviation: 'U.S.',
+  stateAbbreviation: 'National',
 };
 
 const defaultSearchInput: any = {

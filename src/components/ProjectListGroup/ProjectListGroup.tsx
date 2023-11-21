@@ -87,7 +87,7 @@ const ProjectListGroup = ({
   const initiativesLength = initiativesList?.length;
   let exceptionStateName = stateInfo?.stateNameDisplay || selectedStateName;
   if (exceptionStateName === null || exceptionStateName === undefined)
-    exceptionStateName = 'The U.S.';
+    exceptionStateName = 'The National';
 
   const toggleProjectsTab = (tab: number) => {
     if (activeTab !== tab) setActiveTab(tab);

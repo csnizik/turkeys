@@ -66,7 +66,7 @@ const ReportPreview = ({
       <div className='proj-inits'>
         <h2 className='bold-header'>
           {`${
-            selectedStateName === 'U.S.' ? 'The U.S.' : selectedStateName
+            selectedStateName === 'National' ? 'National' : selectedStateName
           } Projects & Initiatives Using the ${data?.practiceName} practice`}
         </h2>
         <p>
@@ -86,8 +86,9 @@ const ReportPreview = ({
       <div className='content-container'>
         <div id='preview-content'>
           <h3 id='preview-content-header'>
-            {data?.practiceName} in{' '}
-            {selectedStateName === 'U.S.' ? 'the U.S.' : selectedStateName}
+            {selectedStateName === 'National'
+              ? `National ${data?.practiceName}`
+              : `${data?.practiceName} in ${selectedStateName}`}
           </h3>
           <div data-testid='conservation-overview'>
             {choiceInputs.input1 && (
@@ -150,8 +151,9 @@ const ReportPreview = ({
     return (
       <div id='preview-content-pdf'>
         <h3 id='preview-content-header-pdf'>
-          {data?.practiceName} in{' '}
-          {selectedStateName === 'U.S.' ? 'the U.S.' : selectedStateName}
+          {selectedStateName === 'National'
+            ? `National ${data?.practiceName}`
+            : `${data?.practiceName} in ${selectedStateName}`}
         </h3>
         <div>
           {choiceInputs.input1 && (

@@ -30,7 +30,8 @@ const Pagination = ({
         <p>
           {indexOfFirstCard + 1} -{' '}
           {indexOfLastCard < cards ? indexOfLastCard : cards} of {cards}{' '}
-          projects for {selectedStateName || 'the U.S.'}
+          projects
+          {selectedStateName !== 'National' && ` for ${selectedStateName}`}
         </p>
       );
     }

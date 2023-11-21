@@ -19,7 +19,7 @@ const EquipPracticeCertificationTrend = ({
   let stateName = useAppSelector(
     (state: any) => state?.stateSlice?.stateNameDisplay
   );
-  if (stateName === 'U.S.') stateName = 'National';
+  if (stateName === 'National') stateName = 'National';
   const fromPdfReport = useAppSelector(
     (state) => state?.pdfGenSlice?.enablePdfGen
   );

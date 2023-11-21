@@ -84,7 +84,7 @@ const ReportPreviewCreator = ({
 
   let stateName = state?.practiceSlice?.searchInfo.state;
   if (!stateName) stateName = state?.stateSlice?.stateNameDisplay;
-  if (!stateName) stateName = 'U.S.';
+  if (!stateName) stateName = 'National';
 
   const initialFilter = {
     stateCode,
