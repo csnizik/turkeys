@@ -21,7 +21,7 @@ let store;
 describe(' rendered correctly', () => {
     render(
       <Provider store={store}>
-        <CPPESCoreView  stateCode={'00'} resourceConcern={uresourceInput} />
+        <CPPESCoreView  stateCode={'00'} resourceConcern={resourceInput} />
       </Provider>
     );
   });
@@ -41,4 +41,3 @@ describe(' rendered correctly', () => {
   test('Should display the conservation practice from the search inputs', () => {
     expect(screen.getByText('Grasses, legumes, and forbs planted for seasonal vegetative cover.')).toBeInTheDocument();
   });
-});

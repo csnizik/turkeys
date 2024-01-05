@@ -92,7 +92,7 @@
     font-weight: $heavy-weight;
     font-size: $h4-font-size;
     padding: 0px 5px 0px 5px;
-    margin-left: 12px;
+    margin-left: 240px;
 }
 
 .filters-select {
@@ -349,10 +349,12 @@ click-check{
     flex-basis: 50%;
     padding-left: 10px;
     overflow: auto;
+   // background-color: #ffbf7f;
 } 
 
 .right-pane-container {
     margin: 36px 24px 36px 24px;
+   // background-color: rgb(227, 255, 127);
 
     .right-pane-header{
         color: #0068AD;

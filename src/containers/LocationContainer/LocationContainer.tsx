@@ -124,31 +124,32 @@ const LocationContainer = () => {
   }, [name]);
   const renderTabContent = () => (
     <TabContent activeTab={currentTabOption}>
-      {currentTabOption === 0 && (
+      {/* {currentTabOption === 0 && (
         <TabPane tabId={0}>
           <OverviewContainer stateNameDisplay={stateInfo.stateNameDisplay} />
         </TabPane>
-      )}
-      {currentTabOption === 1 && (
-        <TabPane tabId={1}>
-          <ResourceConcernContainer
-            currentResourceConcernCategoryId={selectedResourceConcernCategory}
-            currentSpecificResourceConcern={selectedResourceConcern}
-          />
-        </TabPane>
-      )}
-      {currentTabOption === 2 && (
-        <TabPane tabId={2}>
-          <ProjectsContainer />
-        </TabPane>
-      )}
-      {currentTabOption === 3 && (
-        <TabPane tabId={3}>
+      )} Story-1566*/}
+      {currentTabOption === 0 && (     
+          <TabPane tabId={0}>
           <ConservationPracticeContainer
             currentPracticeCategoryId={selectedPracticeCategory}
             currentSpecificPractice={selectedPractice}
           />
         </TabPane>
+          
+      )}
+      {currentTabOption === 1 && (
+        <TabPane tabId={1}>
+        <ResourceConcernContainer
+        currentResourceConcernCategoryId={selectedResourceConcernCategory}
+        currentSpecificResourceConcern={selectedResourceConcern}
+        />
+        </TabPane>        
+      )}
+      {currentTabOption === 2 && (
+        <TabPane tabId={2}>
+        <ProjectsContainer />
+      </TabPane>    
       )}
     </TabContent>
   );

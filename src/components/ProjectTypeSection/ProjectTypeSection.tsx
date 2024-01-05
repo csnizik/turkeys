@@ -106,6 +106,7 @@ const ProjectTypeSection = ({
                     type='application/pdf'
                     width='100%'
                     title={foundInitiative?.lciName}
+                    aria-label={foundInitiative?.lciName}
                   />
                 ) : (
                   <img

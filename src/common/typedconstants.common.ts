@@ -2,10 +2,10 @@ export interface ISearchOptionMap {
   [key: string]: any;
 }
 export const searchOptionMap: ISearchOptionMap = {
-  Overview: { id: 0, displayName: 'Overview' },
+  //Overview: { id: 0, displayName: 'Overview' }, Don't need overview for now story-1566
+  ConservationPractices: { id: 0, displayName:  'Conservation Practices' },
   ResourceConcerns: { id: 1, displayName: 'Resource Concerns'},
   ProjectsAndInitiatives: { id: 2,displayName: 'Projects And Initiatives',},
-  ConservationPractices: { id: 3, displayName:  'Conservation Practices' },
 };
 
 export const ConservationPracticeSections: any = [
@@ -100,7 +100,8 @@ export const tableauGraph = {
 
 export const CPPEScoreLegendData = {
   title: "Conservation Practices Ranked by Physical Effects (CPPE) | NRCS",
-  disclaimer: "This page provides a screening tool to view the effectiveness of conservation practices in treating the specific resource concern at a national level. The positive CPPE score does not ensure treatment of resource concernsand may conflict with other resource concerns. Please contact your local NRCS conservation planners for professional assistance."
+  disclaimer: "This page provides a screening tool to view the effectiveness of conservation practices in treating the specific resource concern at a national level. The positive CPPE score does not ensure treatment of resource concernsand may conflict with other resource concerns. Please contact your local NRCS conservation planners for professional assistance.",
+  linklabel:"Conservation Practice Physical Effects (CPPE) | NRCS",
 }
 
 export const NextStepsData = {

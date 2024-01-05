@@ -1,9 +1,24 @@
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../Redux/hooks/hooks';
+import { setStaticText } from '../../Redux/Slice/staticTextSlice';
+import { useGetConfigurationSettingsStaticTextQuery } from '../../Redux/services/api';
 import './CPPEScoreLegend.scss'
-import {
-    CPPEScoreLegendData
-  } from '../../common/typedconstants.common';
+import {CPPEScoreLegendData} from '../../common/typedconstants.common';
 import CPPERow from '../CPPEScore/CPPERow';
+
+
 const CPPEScoreLegend = (props) => {
+    const dispatch = useAppDispatch();
+    const uiText = useGetConfigurationSettingsStaticTextQuery(null, {
+        pollingInterval: 900000,
+    });
+
+    useEffect(() => {
+        if (uiText && uiText?.data != null) {
+          dispatch(setStaticText(uiText));
+        }
+      }, [uiText]);
+
     const numbers = [5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5];
     const ScoreBoxes: React.ReactElement[] = [];
     for (let i = 0; i < numbers.length; i++) {
@@ -38,8 +53,13 @@ const CPPEScoreLegend = (props) => {
     return (
         <>
             <div className='top-title'>
-                <h2>{CPPEScoreLegendData.title}</h2>
-                <img  src={'../../../../images/arrow-up-right.svg'} alt="img" />
+                <a href={uiText.data.ConservationPracticePhysicalEffects.configurationValue}
+                  target='_blank'
+                  rel='noopener noreferrer'
+              > <h2>{CPPEScoreLegendData.linklabel}
+              <img  src={'../../../../images/arrow-up-right.svg'} alt="img" /></h2>
+              </a>
+                
             </div>
            
             <div className="Alert-container-box">
@@ -52,10 +72,8 @@ const CPPEScoreLegend = (props) => {
                             <h3 className="fsa-alert__heading">Disclaimer</h3>
                             <p className="fsa-alert__text">
                              {CPPEScoreLegendData.disclaimer}
-                         
                             </p>
-                            <p>{CPPERow}</p>
-                            
+                            <p>{CPPERow}</p>   
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware, fotgApi.middleware),
 });
 
 //! Used for refetch on focus or refetch on reconnect
@@ -49,7 +49,7 @@ export function createTestStore() {
   const testStore = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware),
+      getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware, fotgApi.middleware),
   });
   return testStore;
 }

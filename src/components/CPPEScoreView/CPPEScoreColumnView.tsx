@@ -363,27 +363,6 @@ const CPPESCoreView = ({
                 </div>
               )}
             </div>
-
-            <select
-              className='filter-button-practice'
-              onChange={(e) => handlePracticeChange(e.target.value)}
-            >
-              <option value=''> Filter by practice category</option>
-              <option value='Soil Quality'>Cropland Soil Quality</option>
-              <option value='Soil Health'>Cropland Soil Health</option>
-              <option value='Climate-Smart'>Climate-Smart Agriculture</option>
-              <option value='Fish and Wildlife'>
-                Fish and Wildlife Habitat
-              </option>
-              <option value='Irrigation Efficiency'>
-                Irrigation Efficiency
-              </option>
-              <option value='Invasive Species'>
-                Invasive Species Management
-              </option>
-              <option value='Urban Agriculture'>Urban Agriculture</option>
-              <option value='Water Quality'>Water Quality</option>
-            </select>
             <button
               type='button'
               className='apply-button'
@@ -504,21 +483,20 @@ const CPPESCoreView = ({
                       })()}
                     </div>
                     <h4>
-                      Practice Category:{' '}
-                      <a href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'>
-                        Climate-Smart Agriculture
-                      </a>
-                    </h4>
-                    <h4>
                       {' '}
                       Specification Sheet:{' '}
-                      <a href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'>
-                        View the National Standard Document
-                      </a>{' '}
-                      <img
+                      <a href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        View the National Standard Document 
+                        {'  '}
+                        <img
                         src='../../../../images/arrow-up-right.svg'
                         alt='img'
                       />
+                      </a>
+                     
                     </h4>
 
                     <div className='rationale-component'>

@@ -68,7 +68,11 @@
 
     .link-text {
       float: right;
+      a {    
+       color: #005ea2;
+      }
     }
+    
     p:nth-of-type(2) {
       font-size: 16px;
       margin: 1.25rem 0 1.563rem 0;

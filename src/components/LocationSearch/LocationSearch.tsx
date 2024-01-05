@@ -40,11 +40,11 @@ const LocationSearch = () => {
 
   const handleDropdownSelection = (event) => {
      // The next three lines are for ANDI accebility tool
-    const selectedInd = event.target.selectedIndex; 
+    const selectedInd = event.target.selectedIndex;
     const selectedOption = event.target.options[selectedInd];
     const selectedDisplayName = selectedOption.getAttribute('state-displayname');
     const { name, value } = event.target;
-    if (name === 'stateOptions' && value) { 
+    if (name === 'stateOptions' && value) {
       setSelectedState(value);
       setSelectedStateName(selectedDisplayName);
     } else {
@@ -74,7 +74,7 @@ const LocationSearch = () => {
     history.push({
       pathname: `${
         selectedStateCode?.stateCode || DEFAULT_NATIONAL_LOCATION
-      }/Overview`,
+      }/ConservationPractices`,
     });
 
     //Google Analytics code for LocationSearch (selectedStateCode)
@@ -123,7 +123,11 @@ const LocationSearch = () => {
               stateStatus.data &&
               stateStatus.data.map((state: IStateDropdownOption) => {
                 return (
-                  <option key={state.stateCode} value={state.stateCode} state-displayname={state.stateNameDisplay}>
+                  <option
+                    key={state.stateCode}
+                    value={state.stateCode}
+                    data-state-displayname={state.stateNameDisplay}
+                  >
                     {state.stateNameDisplay}
                   </option>
                 );

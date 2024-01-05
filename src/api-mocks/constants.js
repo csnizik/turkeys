@@ -1708,6 +1708,10 @@ export const staticText = {
       configurationSettingName: "RegionalConservationPracticeLink",
       configurationValue: "https://publicdashboards.dl.usda.gov/t/FPAC_PUB/views/CPDPracticeListbyAcres/Dashboard1?Stabbr"
     },
+    ServiceCenterlocator: {
+      configurationSettingName:"ServiceCenterlocator",
+      configurationValue:"https://www.farmers.gov/working-with-us/USDA-service-centers"
+    },
     TopPracticesEQUIPOpenDataLink: {
       configurationSettingName: "TopPracticesEQUIPOpenDataLink",
       configurationValue: "https://publicdashboards.dl.usda.gov/t/FPAC_PUB/views/CODP_Conservation_Practice_Embeds/top_practices_by_obligated?state_filter"

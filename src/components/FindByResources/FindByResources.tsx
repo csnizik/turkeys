@@ -29,7 +29,7 @@ const FindByResources = () => {
   const [selectedResource, setSelectedResource] = useState(-1);
   const [selectedSubResource, setSelectedSubResource] = useState(-1);
   const [hiddenSelectedResource, setHiddenSelectedResource] = useState(-1);
-  const [selectedResourceConcern, setSelectedResourceConcern] = useState<string>('ALL'); 
+  const [selectedResourceConcern, setSelectedResourceConcern] = useState<string>('ALL');
   const [selectedResourceConcernName, setSelectedResourceConcernName] = useState<string>('Select resource');
 
   const handleFindResources = () => {
@@ -67,7 +67,7 @@ const FindByResources = () => {
 
   const handleCategoryChange = (e) => {
      // The next three lines are for ANDI accebility tool
-    const selectedInd = e.target.selectedIndex; 
+    const selectedInd = e.target.selectedIndex;
     const selectedOption = e.target.options[selectedInd];
     const selectedCategory = selectedOption.getAttribute('concern-displayname');
     const resourceVal = e.target.value;
@@ -87,7 +87,7 @@ const FindByResources = () => {
         console.log(response);
       }
       )
-      
+
   };
   useEffect(() => {
     setSelectedResource(-1);
@@ -98,9 +98,9 @@ const FindByResources = () => {
     dispatch(setSpecificResourceConcern(-1));
   }, []);
 
-  const handleResourceChange = (e) => {  
+  const handleResourceChange = (e) => {
      // The next three lines are for ANDI accebility tool
-    const selectedInd = e.target.selectedIndex; 
+    const selectedInd = e.target.selectedIndex;
     const selectedOption = e.target.options[selectedInd];
     const selectedCategory = selectedOption.getAttribute('concern-displayname');
     const resourceSubVal = e.target.value;
@@ -146,7 +146,7 @@ const FindByResources = () => {
                         <option
                           key={resource.resourceConcernId}
                           value={resource.resourceConcernId}
-                          concern-displayname={resource.resourceConcernName}
+                          data-concern-displayname={resource.resourceConcernName}
                         >
                           {resource.resourceConcernName}
                         </option>
@@ -173,7 +173,7 @@ const FindByResources = () => {
                 {subResource.isSuccess && subResource.data
                   ? subResource.data.map((item: IResourceConcernList) => {
                       return (
-                        <option key={item.resourceConcernId} value={item.resourceConcernId} concern-displayname={item.resourceConcernName}>
+                        <option key={item.resourceConcernId} value={item.resourceConcernId} data-concern-displayname={item.resourceConcernName}>
                           {item.resourceConcernName}
                         </option>
                       );

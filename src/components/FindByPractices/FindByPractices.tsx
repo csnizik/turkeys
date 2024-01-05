@@ -32,9 +32,9 @@ const FindByPractices = () => {
   const [selectedPractice, setSelectedPractice] = useState(-1);
   const [selectedSubPractice, setSelectedSubPractice] = useState(-1);
   const [hiddenSelectedPractice, setHiddenSelectedPractice] = useState(-1);
-  const [selectedPracticeCategoryName, setSelectedPracticeCategoryName] = useState('All practices(default)'); 
-  const [selectedPracticeDisplayName, setSelectedPracticeDisplayName] = useState('-Select practice-');  
-  
+  const [selectedPracticeCategoryName, setSelectedPracticeCategoryName] = useState('All practices(default)');
+  const [selectedPracticeDisplayName, setSelectedPracticeDisplayName] = useState('-Select practice-');
+
 
   const handleFindPractices = () => {
     dispatch(setPracticeCategory(+hiddenSelectedPractice));
@@ -71,7 +71,7 @@ const FindByPractices = () => {
 
   const handleCategoryChange = (e) => {
     // The next three lines are for ANDI accebility tool
-    const selectedInd = e.target.selectedIndex; 
+    const selectedInd = e.target.selectedIndex;
     const selectedOption = e.target.options[selectedInd];
     const selectedPract = selectedOption.getAttribute('practice-category-displayname');
     const practiceVal = e.target.value;
@@ -102,14 +102,14 @@ const FindByPractices = () => {
     dispatch(setSpecificResourceConcern(-1));
   }, []);
 
-  const handlePracticeChange = (e) => { 
+  const handlePracticeChange = (e) => {
     const practiceSubVal = e.target.value;
     setSelectedSubPractice(practiceSubVal);
     if (selectedPractice < 0) {
       findP(practiceSubVal);
     }
-    // For ANDI Tool 
-    const selectedInd = e.target.selectedIndex; 
+    // For ANDI Tool
+    const selectedInd = e.target.selectedIndex;
     const selectedOption = e.target.options[selectedInd];
     const selectedPract = selectedOption.getAttribute('practice-displayname');
     setSelectedPracticeDisplayName(selectedPract);
@@ -153,7 +153,7 @@ const FindByPractices = () => {
                         <option
                           key={practice.practiceCategoryId}
                           value={practice.practiceCategoryId}
-                          practice-category-displayname={practice.practiceCategoryName}
+                          data-practice-category-displayname={practice.practiceCategoryName}
                         >
                           {practice.practiceCategoryName}
                         </option>
@@ -180,7 +180,7 @@ const FindByPractices = () => {
                 {subPractice.isSuccess && subPractice.data
                   ? subPractice.data.map((item: IPractice) => {
                       return (
-                        <option key={item.practiceId} value={item.practiceId} practice-displayname={item.practiceName}>
+                        <option key={item.practiceId} value={item.practiceId} data-practice-displayname={item.practiceName}>
                           {item.practiceName}
                         </option>
                       );
@@ -196,7 +196,7 @@ const FindByPractices = () => {
         </div>
 
         {/* left of image */}
-        
+
       </div>
       {/* section above button */}
     </div>

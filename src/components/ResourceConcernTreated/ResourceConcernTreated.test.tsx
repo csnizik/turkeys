@@ -27,8 +27,8 @@ describe('Verify ResourceConcernList is rendered correctly', () => {
       </Provider>
     );
     userEvent.click(screen.getByText('Water'));
-    expect(screen.getByText('Drifted snow'));
+    expect(screen.getByText('Positive Effects'));
     userEvent.click(screen.getByText('Water'));
-    expect(screen.queryByText('Drifted snow')).not.toBeInTheDocument();
+    expect(screen.queryByText('Positive Effects')).not.toBeInTheDocument();
   });
 });

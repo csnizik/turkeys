@@ -50,16 +50,15 @@ const ProjectsContainer = () => {
     {
       id: 1,
       title: uiText?.piCigHeading?.configurationValue,
-      paragraphText: uiText?.piCigHeadingDescription?.configurationValue,
-      paragraphDescription:
-        uiText?.piCigHeadingDescription2?.configurationValue,
+      paragraphText: uiText?.piCigHeadingDescription.configurationValue.split('*')[0],
+      paragraphDescription: uiText?.piCigHeadingDescription2?.configurationValue,
       imgSrc: uiText?.piCigHeadingImage?.configurationValue.split('*')[0],
       imgAlt: uiText?.piCigHeadingImage?.configurationValue.split('*')[1],
     },
     {
       id: 2,
       title: uiText?.piLciHeading?.configurationValue,
-      paragraphText: uiText?.piLciHeadingDescription?.configurationValue,
+      paragraphText: uiText?.piLciHeadingDescription?.configurationValue.split('*')[0],
       paragraphDescription: uiText?.piLciHeadingDescription?.configurationValue,
       imgSrc: uiText?.piLciHeadingImage?.configurationValue.split('*')[0],
       imgAlt: uiText?.piLciHeadingImage?.configurationValue.split('*')[1],
