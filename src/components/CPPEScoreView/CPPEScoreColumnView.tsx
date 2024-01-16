@@ -520,13 +520,7 @@ const CPPESCoreView = ({
                             />{' '}
                             {/* <p>Tree/shrub establishment involves planting seedlings or cuttings, seeding, or creating conditions that promote natural regeneration.</p> */}
                           </p>    
-                      </div> 
-                       <div className='right'>  
-                          <img 
-                            alt=''
-                            src='../../../images/landscape-initiatives-images/default.jpg'
-                             /> 
-                       </div>   
+                      </div>  
                     </div>
                     <CPPECaution practiceCode={practice[0].practiceCode}/>
                   </div>
