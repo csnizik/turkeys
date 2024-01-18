@@ -319,10 +319,10 @@ const CPPESCoreView = ({
               <button
                 type='button'
                 onClick={toggleExpanded}
-                className='filter-button'
+                className={`filter-button ${expanded ? "up-arrow" : "down-arrow"}`}
               />
               <select className='filter-button-label'>
-                <option>Filter by CPPE</option>
+                <option value="none" selected disabled hidden>Filter by CPPE &nbsp;&nbsp;&nbsp;&nbsp;</option>
               </select>
               {expanded && (
                 <div className='flexbox-vertical'>

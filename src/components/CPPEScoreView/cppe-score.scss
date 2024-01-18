@@ -113,26 +113,6 @@
     cursor: pointer;
 }
 
-.up-arrow:after {
-    display: inline-block;
-    content: " ";
-    margin-left: 10px;
-    margin-bottom: 2px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid rgb(0, 0, 0);
-}
-  
-.down-arrow:after {
-    display: inline-block;
-    content: " ";
-    margin-left: 10px;
-    margin-bottom: 2px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid black;
-}
-
 .filter-lable{
     display: 'inline-block';
     margin-Left: '1px';
@@ -562,8 +542,33 @@ click-check{
     top: 100%;
     z-index: 1;
 }
+
+.up-arrow:after {
+    display: inline-block;
+    content: " ";
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(225deg);
+   -webkit-transform: rotate(225deg);
+     margin-left: 330px;
+     transition: 400ms;
+}
   
-  .filter-button {
+.down-arrow:after {
+    display: inline-block;
+    content: " ";
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-left: 330px;
+    transition: 400ms;
+ }
+  
+.filter-button {
     cursor: default !important;
     position: absolute;
     // margin: $short-space-size;
@@ -583,9 +588,9 @@ click-check{
     }
   }
 
-  .filter-button-label {
+ .filter-button-label {
     cursor: default;
-    // position: absolute;
+    //  position: absolute;
     width: 280%;
     cursor: default;
     // margin: $short-space-size;
@@ -597,4 +602,8 @@ click-check{
     font-weight: $heavy-weight;
     font-size: $h4-font-size;
     padding: 0px 0px 0px 5px;
+    /* for Firefox */ 
+    appearance: none; 
+    /* for Safari, Chrome, Opera */ 
+    -webkit-appearance: none;
   }
