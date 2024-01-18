@@ -102,7 +102,7 @@ const CPPESCoreView = ({
     setPractice([selectedPractice]);
     setData(data);
   };
-  
+
   // Data from the CPPE Selection box filter
   const [sortBySelect, setsortBySelect] = useState<string>('');
 
@@ -135,7 +135,7 @@ const CPPESCoreView = ({
   };
 
   const {
-    data: getCppeScoresData, 
+    data: getCppeScoresData,
     error,
     isLoading,
     isSuccess,
@@ -149,15 +149,21 @@ const CPPESCoreView = ({
   useEffect(() => {
     if (getCppeScoresData !== undefined) {
       // Call API from here
-      const fetchData: PracticeEntry[] = getCppeScoresData.map((p) => ({
-        cppeScore: p.cppeEffectValue,
-        practiceCode: p.practiceCode,
-        title: p.practiceName,
-        rationale: p.rationale,
-        practiceCategoryId: p.practiceCategoryId,
-        practiceId: p.practiceId,
-        practiceInfo:p.practiceInfo 
-      }));
+      const fetchData: PracticeEntry[] = getCppeScoresData
+        .filter(
+          (p) =>
+            p.cppeEffectValue !== 0 ||
+            !p.rationale.toLowerCase().includes('not applicable')
+        )
+        .map((p) => ({
+          cppeScore: p.cppeEffectValue,
+          practiceCode: p.practiceCode,
+          title: p.practiceName,
+          rationale: p.rationale,
+          practiceCategoryId: p.practiceCategoryId,
+          practiceId: p.practiceId,
+          practiceInfo: p.practiceInfo,
+        }));
 
       fetchData.sort((a: any, b: any): any => {
         return b.cppeScore - a.cppeScore;
@@ -274,38 +280,44 @@ const CPPESCoreView = ({
       setIsVisible(true);
     }
     for (let i = 1; i < filterSelections.length; i++) {
-      const filterData = initialData.filter((item) => (item.cppeScore === parseInt(filterSelections[i], 10)));
+      const filterData = initialData.filter(
+        (item) => item.cppeScore === parseInt(filterSelections[i], 10)
+      );
       newData = newData.concat(filterData);
-    };
+    }
     setData(newData);
   };
 
   const handleFilterSelect = (event) => {
     //console.log("Submitted! Values selected are", filterSelections);
     if (filterSelections.includes(event.target.value)) {
-      setFilterSelections(filterSelections.filter((item) => (item !== event.target.value)));
-    } else {    
+      setFilterSelections(
+        filterSelections.filter((item) => item !== event.target.value)
+      );
+    } else {
       setFilterSelections([...filterSelections, event.target.value.toString()]);
     }
   };
 
   const removeFilter = (event) => {
-    setFilterSelections(filterSelections.filter((item) => (item !== event.currentTarget.id)));
+    setFilterSelections(
+      filterSelections.filter((item) => item !== event.currentTarget.id)
+    );
     if (filterSelections.length <= 2) {
       setIsVisible(false);
     }
-  }
+  };
 
   const clearFilter = () => {
-    setFilterSelections([''])
+    setFilterSelections(['']);
     setIsVisible(!isVisible);
     setData(initialData);
   };
 
   return (
     <>
-      <div className='Alert-container-box'> 
-       <CPPEScoreLegend/>
+      <div className='Alert-container-box'>
+        <CPPEScoreLegend />
         <div className='container'>
           <p className='title'>
             {dataCount !== -1 ? dataCount : ''} Conservation Practice(s)
@@ -319,10 +331,14 @@ const CPPESCoreView = ({
               <button
                 type='button'
                 onClick={toggleExpanded}
-                className={`filter-button ${expanded ? "up-arrow" : "down-arrow"}`}
+                className={`filter-button ${
+                  expanded ? 'up-arrow' : 'down-arrow'
+                }`}
               />
               <select className='filter-button-label'>
-                <option value="none" selected disabled hidden>Filter by CPPE &nbsp;&nbsp;&nbsp;&nbsp;</option>
+                <option value='none' selected disabled hidden>
+                  Filter by CPPE &nbsp;&nbsp;&nbsp;&nbsp;
+                </option>
               </select>
               {expanded && (
                 <div className='flexbox-vertical'>
@@ -349,7 +365,7 @@ const CPPESCoreView = ({
                           name={platform}
                           value={platform}
                           className='m-3 cursor-pointer'
-                          onClick={event => handleFilterSelect(event)}
+                          onClick={(event) => handleFilterSelect(event)}
                         />
                         <div className={`filter-${color}-box`}>{platform}</div>
                         {numericValue !== 0 && (
@@ -375,8 +391,13 @@ const CPPESCoreView = ({
             <div className='filters-select'>
               <span className='filter-lable'>Active&nbsp;Filters:</span>
               {filterSelections.slice(1).map((filter) => (
-                <div id ={filter} key={filter} className='filters-select-input' onClick={removeFilter}>
-                  <InputTag description={`CPPE: ${filter}`}/>
+                <div
+                  id={filter}
+                  key={filter}
+                  className='filters-select-input'
+                  onClick={removeFilter}
+                >
+                  <InputTag description={`CPPE: ${filter}`} />
                 </div>
               ))}
               {(() => {
@@ -436,24 +457,30 @@ const CPPESCoreView = ({
               isSuccess &&
               data.length > 0 &&
               Object.keys(checkedEntries).length > 0 ? (
-                 <div className='conservation-practices'>
-                  {data.map((item) => (
-                    <CPPEScoreEntry
-                      key={hidKey}
-                      handleRowClick={handleRowClick}
-                      item={item}
-                      hiddenKey={hidKey++}
-                      activeClassName={activeClassName}
-                      checked={checkedEntries[getCheckedEntriesKey(item)]}
-                      handleChange={(item: PracticeEntry) => () =>
-                        setCheckedEntries((prevCheckedEntries) => ({
-                          ...prevCheckedEntries,
-                          [getCheckedEntriesKey(item)]:
-                            !prevCheckedEntries[getCheckedEntriesKey(item)],
-                        }))}
-                    />
-                  ))}
-               </div>
+                <div className='conservation-practices'>
+                  {data
+                    .filter(
+                      (item) =>
+                        item.cppeScore !== 0 ||
+                        !item.rationale.toLowerCase().includes('not applicable')
+                    )
+                    .map((item) => (
+                      <CPPEScoreEntry
+                        key={hidKey}
+                        handleRowClick={handleRowClick}
+                        item={item}
+                        hiddenKey={hidKey++}
+                        activeClassName={activeClassName}
+                        checked={checkedEntries[getCheckedEntriesKey(item)]}
+                        handleChange={(item: PracticeEntry) => () =>
+                          setCheckedEntries((prevCheckedEntries) => ({
+                            ...prevCheckedEntries,
+                            [getCheckedEntriesKey(item)]:
+                              !prevCheckedEntries[getCheckedEntriesKey(item)],
+                          }))}
+                      />
+                    ))}
+                </div>
               ) : (
                 <Spinner />
               )}
@@ -462,9 +489,9 @@ const CPPESCoreView = ({
                 {flag === false ? (
                   <h1>...</h1>
                 ) : (
-                  <div className='right-pane-container'>      
-                  <CPPEPracticeLink practice={practice[0]}/>    
-                    
+                  <div className='right-pane-container'>
+                    <CPPEPracticeLink practice={practice[0]} />
+
                     <div className='cpp-score'>
                       {(() => {
                         const item = getCPPScore(practice, 0, index);
@@ -485,18 +512,18 @@ const CPPESCoreView = ({
                     <h4>
                       {' '}
                       Specification Sheet:{' '}
-                      <a href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'
+                      <a
+                        href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'
                         target='_blank'
                         rel='noopener noreferrer'
                       >
-                        View the National Standard Document 
+                        View the National Standard Document
                         {'  '}
                         <img
-                        src='../../../../images/arrow-up-right.svg'
-                        alt='img'
-                      />
+                          src='../../../../images/arrow-up-right.svg'
+                          alt='img'
+                        />
                       </a>
-                     
                     </h4>
 
                     <div className='rationale-component'>
@@ -510,19 +537,19 @@ const CPPESCoreView = ({
                       </p>
                     </div>
                     <div className='practice-info-component'>
-                      <div className='left'> 
-                          <h3> Practice Information</h3>
-                          <p>
-                            <GetElement
-                              array={practice}
-                              index={0}
-                              property='practiceInfo'
-                            />{' '}
-                            {/* <p>Tree/shrub establishment involves planting seedlings or cuttings, seeding, or creating conditions that promote natural regeneration.</p> */}
-                          </p>    
-                      </div>  
+                      <div className='left'>
+                        <h3> Practice Information</h3>
+                        <p>
+                          <GetElement
+                            array={practice}
+                            index={0}
+                            property='practiceInfo'
+                          />{' '}
+                          {/* <p>Tree/shrub establishment involves planting seedlings or cuttings, seeding, or creating conditions that promote natural regeneration.</p> */}
+                        </p>
+                      </div>
                     </div>
-                    <CPPECaution practiceCode={practice[0].practiceCode}/>
+                    <CPPECaution practiceCode={practice[0].practiceCode} />
                   </div>
                 )}
               </div>
