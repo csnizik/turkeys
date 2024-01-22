@@ -34,8 +34,8 @@ const csvFields = [
 ] as const;
 
 const csvFieldNameToProperty = {
-  CPPE: 'id',
-  Code: 'Id2',
+  CPPE: 'cppeScore',
+  Code: 'practiceCode',
   'Conservation Practice': 'title',
   Rationale: 'rationale',
 } as const;
@@ -246,7 +246,7 @@ const CPPESCoreView = ({
         `${acc}${csvFields
           .map((field) => {
             if (field === 'Effect') {
-              return categoryChart[curr.cppeScore] ?? 'No Comment';
+              return categoryChart[curr.cppeScore] ?? 'No Effect';
             }
             return `"${curr[csvFieldNameToProperty[field]]}"`;
           })
