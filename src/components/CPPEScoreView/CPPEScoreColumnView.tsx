@@ -558,7 +558,7 @@ const CPPESCoreView = ({
         </div>
         <div className='export-container container'>
           <button type='button' className='usa-button' onClick={handleExport}>
-            Export {numSelectedEntries} Select Practice(s)
+            Export the CPPE Data for {numSelectedEntries} Selected Practice(s)
           </button>
         </div>
       </div>
