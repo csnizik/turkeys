@@ -12,19 +12,10 @@ Build the tarball
 Prep and install 1st server
 7. $ scp cpdifrontend.tar.gz <paccount>@10.203.24.12:cpdifrontend.tar.gz
 8. $ ssh <paccount>@10.203.24.12
-9. $ /app/scripts/s1_deploy
-10. $ systemctl stop cpdifrontend-dev.dev.service
-11. $ systemctl status cpdifrontend-dev.dev.service
-    Verify service stopped
-12. /app/scripts/s2_deploy
-13. $ systemctl start cpdifrontend-dev.dev.service
-14. exit (exits sudo)
-15. exit (exits remote)
+9. sudo su
+10. $ /app/scripts/s1_deploy.sh
+    Verify service started
 
 Prep and install 2nd server
-16. scp cpdifrontend.tar.gz <paccount>@10.203.24.17:cpdifrontend.tar.gz
-17. ssh <paccount>@10.203.24.17
-18. /app/scripts/s1_deploy
-19. /app/scripts/s2_deploy
-20. exit (exits sudo)
-21. exit (exits remote)
+Repeat the steps done on the 1st server on the 2nd substituting
+.17 for .12 in the IP addresses
