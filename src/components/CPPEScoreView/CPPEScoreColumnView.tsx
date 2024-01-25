@@ -511,19 +511,20 @@ const CPPESCoreView = ({
                     </div>
                     <h4>
                       {' '}
-                      Specification Sheet:{' '}
+                      Get{' '}
                       <a
                         href='https://www.nrcs.usda.gov/resources/guides-and-instructions/conservation-practice-standards'
                         target='_blank'
                         rel='noopener noreferrer'
                       >
-                        View the National Standard Document
+                        National Conservation Practice Standard Document
                         {'  '}
                         <img
                           src='../../../../images/arrow-up-right.svg'
                           alt='img'
                         />
                       </a>
+                      from NRCS website.
                     </h4>
 
                     <div className='rationale-component'>
