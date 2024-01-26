@@ -79,15 +79,6 @@ const ResourceConcernCardDetails = ({ setResourceConcernViewType }: any) => {
                         </button>
                         <p>{resourceConcern.resourceConcernDescription}</p>
                       </div>
-                      <img
-                        className='resourceConcern-image'
-                        src={
-                          imageName
-                            ? `../../images/landscape-initiatives-images/${imageName}`
-                            : `../../images/landscape-initiatives-images/default.jpg`
-                        }
-                        alt={resourceConcern.resourceConcernName}
-                      />
                     </div>
                   </div>
                 );
