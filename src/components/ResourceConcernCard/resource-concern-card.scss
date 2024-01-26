@@ -19,9 +19,8 @@
       border-radius: 0.5em;
       text-align: left;
       background-color: $white;
-      display: grid;
-      grid-template-columns: 6fr 1fr;
-
+      display: flex;
+      
       .info-box {
         padding: 1.25rem 1.563rem 0rem 1.563rem;
 
