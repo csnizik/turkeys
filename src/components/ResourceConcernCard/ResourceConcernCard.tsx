@@ -45,7 +45,7 @@ const ResourceConcernCardDetails = ({ setResourceConcernViewType }: any) => {
 
 
   return (
-    <div className='heading' data-testid='ResourceConcern-Card'>
+    <div className='rc-heading' data-testid='ResourceConcern-Card'>
       {resourceConcernCategory?.length !== 1 ? (
         <h2>{resourceConcernCategory?.length} Resource Concerns</h2>
       ) : (
