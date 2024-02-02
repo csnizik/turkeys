@@ -67,21 +67,23 @@ export const api = createApi({
         `/resourceConcern/concern/category/${swapaCategory}`,
     }),
     // Individual Resource Concern Info based on ID
-    getIndividualResourceConcern: builder.query<[IIndividualResourceConcern], any>({
+    getIndividualResourceConcern: builder.query<
+      [IIndividualResourceConcern],
+      any
+    >({
       query: (resourceId) =>
         `/resourceConcern/individual/concern/${resourceId}`,
     }),
     // Get the CPPE score for a individual resource concern
-    getCPPEScores: builder.query<ICPPEScore[], { resourceId: number; stateCode: string }>({
+    getCPPEScores: builder.query<ICPPEScore[], { resourceId: number }>({
       query: (data) => {
-        const {resourceId, stateCode} = data;
-        return `/CPPE/${resourceId}/${stateCode}`
-      }
+        const { resourceId } = data;
+        return `/CPPE/rc/${resourceId}`;
+      },
     }),
     // Get the negatively impacted practice resource concerns via practice code
     getNegativeCPPEPractice: builder.query<ICPPEPractice[], string>({
-      query: (practiceCode) =>
-          `/CPPE/${practiceCode}`,
+      query: (practiceCode) => `/CPPE/${practiceCode}`,
     }),
     //!Post request for Search
     postSearchData: builder.query<ISearchData[], ISearchData>({

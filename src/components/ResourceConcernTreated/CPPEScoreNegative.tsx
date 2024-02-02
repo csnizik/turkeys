@@ -3,19 +3,20 @@ import './resource-concern-treated.scss';
 import { PracticeEntry } from '../CPPEScoreView/utils';
 import { useGetCPPEScoresQuery } from '../../Redux/services/api';
 
-const CPPEScoreNegative = (resourceConcerns: any ) => {
+const CPPEScoreNegative = (resourceConcerns: any) => {
   const rc = resourceConcerns;
   const [dataR, setDataR] = useState<Array<PracticeEntry>>([]);
   const searchInputData = {
-    resourceId: rc.resourceConcerns[0].rcId ,
-    stateCode: '00',
+    resourceId: rc.resourceConcerns[0].rcId,
     //practice_category_id: currentPracticeCategoryId,
   };
-  const { data : getCppeScoresData,
+  const {
+    data: getCppeScoresData,
     error,
     isLoading,
     isSuccess,
-    isError, } = useGetCPPEScoresQuery(searchInputData);
+    isError,
+  } = useGetCPPEScoresQuery(searchInputData);
   // use effect
   useEffect(() => {
     if (getCppeScoresData !== undefined) {
@@ -27,35 +28,40 @@ const CPPEScoreNegative = (resourceConcerns: any ) => {
         rationale: p.rationale,
         practiceCategoryId: p.practiceCategoryId,
         practiceId: p.practiceId,
-        practiceInfo:p.practiceInfo 
+        practiceInfo: p.practiceInfo,
       }));
-     setDataR(fetchData.filter((item) => (item.cppeScore < 0)));      
-     dataR.sort((a: any, b: any): any => {
+      setDataR(fetchData.filter((item) => item.cppeScore < 0));
+      dataR.sort((a: any, b: any): any => {
         return b.cppeScore - a.cppeScore;
       });
     }
   }, [getCppeScoresData]);
 
   return (
-   <>
-      { dataR && (
+    <>
+      {dataR && (
         <section className='child-accordion'>
-          <h2> &nbsp; Negative Effects (Woresening) </h2> 
-          <hr/>
+          <h2> &nbsp; Negative Effects (Woresening) </h2>
+          <hr />
           {dataR.map((resourceConcern) => {
-           return <>
-                        <div className='single-content' key={resourceConcern.practiceId}> 
-                            <div className='red-box2'> {resourceConcern.cppeScore} </div>
-                                <div className='content-description'>
-                                        <h1> {resourceConcern.title}</h1>
-                                        <p>{resourceConcern.rationale}</p> 
-                                </div>
-                            </div>  
-                    </>  
-           })}
+            return (
+              <>
+                <div
+                  className='single-content'
+                  key={resourceConcern.practiceId}
+                >
+                  <div className='red-box2'> {resourceConcern.cppeScore} </div>
+                  <div className='content-description'>
+                    <h1> {resourceConcern.title}</h1>
+                    <p>{resourceConcern.rationale}</p>
+                  </div>
+                </div>
+              </>
+            );
+          })}
         </section>
       )}
-    </>  
+    </>
   );
 };
 

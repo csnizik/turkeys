@@ -142,7 +142,6 @@ const CPPESCoreView = ({
     isError,
   } = useGetCPPEScoresQuery({
     resourceId: resourceConcern.resourceConcernId,
-    stateCode,
   });
 
   // use effect

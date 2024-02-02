@@ -12,7 +12,6 @@ const CPPEScore = ({
 any) => {
   const { data, error, isLoading, isSuccess, isError } = useGetCPPEScoresQuery({
     resourceId: selectedResourceConcernId,
-    stateCode: selectedStateCode,
   });
 
   const [tab, setTab] = useState(null);
