@@ -4,7 +4,6 @@ import { cleanup, render, screen } from '../../common/test-utils/test_utils';
 import { IIndividualResourceConcern } from '../../common/types';
 import { useGetCPPEScoresQuery } from '../../Redux/services/api';
 import CPPEScorePositive from './CPPEScorePositive';
-import MapView from '@arcgis/core/views/MapView';
 
 const mockedResourcesResponse = [
   {
@@ -57,7 +56,7 @@ describe('Verify CPPEScore is rendered correctly', () => {
 
   test('Verify CPPEScoreNegative component', async () => {
     expect(
-      screen.getByTestId('Negative Effects (Woresening)')
+      screen.getByTestId('Negative Effects (Worsening)')
     ).toBeInTheDocument();
     // expect(screen.getByTestId('selectAll')).not.toBeChecked();
   });

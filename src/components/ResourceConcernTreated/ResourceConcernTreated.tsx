@@ -21,8 +21,13 @@ const ResourceConcernTreated = ({
   const [tab, setTab] = useState(null);
   const [tab2, setTab2] = useState(null);
 
-  const { data, error, isLoading, isSuccess, isError } =
-    useGetRelatedResourceConcernCategoryQuery(initialFilter);
+  const {
+    data: RCdata,
+    error,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useGetRelatedResourceConcernCategoryQuery(initialFilter);
 
   const fromPdfReport = useAppSelector(
     (state) => state?.pdfGenSlice?.enablePdfGen
@@ -45,7 +50,7 @@ const ResourceConcernTreated = ({
   };
 
   const renderAccordionSectionPositive = (rcCa: any) => {
-    const rc = rcCa;  
+    const rc = rcCa;
 
     if (!rc || !rc.result || rc.result.length < 1) return null;
     return (
@@ -72,14 +77,21 @@ const ResourceConcernTreated = ({
                 <button type='button' className='accordion-data'>
                   <h3>
                     {rcCategory.rcCategoryName}
-                    {/* <span className='num-rc-count'>{`(${rcCategory.resourceConcerns.length} resource concerns)`}</span> */}
+
+                    <span className='num-rc-count'>{`(${
+                      rcCategory.resourceConcerns.filter(
+                        (item) => item.cppeEffectValue > 0
+                      ).length
+                    } resource concerns)`}</span>
                   </h3>
                 </button>
               </li>
               {(tab === categoryId || fromPdfReport) && (
                 <CPPEScorePositive
-                resourceConcerns={rcCategory.resourceConcerns}
-              />
+                  resourceConcerns={rcCategory.resourceConcerns.filter(
+                    (item) => item.cppeEffectValue > 0
+                  )}
+                />
               )}
             </div>
           );
@@ -90,6 +102,7 @@ const ResourceConcernTreated = ({
 
   const renderAccordionSectionNegative = (rcCa: any) => {
     const rc = rcCa;
+
     if (!rc || !rc.result || rc.result.length < 1) return null;
     return (
       <div className='accordion-section' ref={rcRef}>
@@ -115,13 +128,21 @@ const ResourceConcernTreated = ({
                 <button type='button' className='accordion-data'>
                   <h3>
                     {rcCategory.rcCategoryName}
-                    {/* <span className='num-rc-count'>{`(${rcCategory.resourceConcerns.length} resource concerns)`}</span> */}
+                    {
+                      <span className='num-rc-count'>{`(${
+                        rcCategory.resourceConcerns.filter(
+                          (item) => item.cppeEffectValue < 0
+                        ).length
+                      } resource concerns)`}</span>
+                    }
                   </h3>
                 </button>
               </li>
               {(tab2 === categoryId || fromPdfReport) && (
                 <CPPEScoreNegative
-                  resourceConcerns={rcCategory.resourceConcerns}
+                  resourceConcerns={rcCategory.resourceConcerns.filter(
+                    (item) => item.cppeEffectValue < 0
+                  )}
                 />
               )}
             </div>
@@ -133,22 +154,26 @@ const ResourceConcernTreated = ({
 
   const uiText: any = useAppSelector(
     (state) => (state?.staticTextSlice?.staticData as any)?.data
-  ); 
+  );
 
   return (
     <>
-     {isLoading && <Spinner />}
+      {isLoading && <Spinner />}
       {isError && error}
-      {isSuccess && data && (
+      {isSuccess && RCdata && (
         <section className='rc-treated-box' id='ResourceConcernsTreated'>
           <h2>{uiText?.cpDetailHeadingRC?.configurationValue}</h2>
           <p data-testid='rc-description'>
             {uiText?.cpDetailHeadingRCDescription?.configurationValue}
           </p>
-          <CPPEScoreLegend/>
-          < div className='cppe-wrapper'>
-            <section className='left-side'>{renderAccordionSectionPositive(data)}</section>
-            <section className='right-side'>{renderAccordionSectionNegative(data)}</section>
+          <CPPEScoreLegend />
+          <div className='cppe-wrapper'>
+            <section className='left-side'>
+              {renderAccordionSectionPositive(RCdata)}
+            </section>
+            <section className='right-side'>
+              {renderAccordionSectionNegative(RCdata)}
+            </section>
           </div>
         </section>
       )}
