@@ -21,7 +21,7 @@ const mockedResourcesResponse = [
     createdDate: '2023-07-11T11:35:28.16',
     lastModifiedBy: null,
     lastModifiedDate: null,
-  },
+  }
 ];
 
 const resourceConcern: IIndividualResourceConcern = {
