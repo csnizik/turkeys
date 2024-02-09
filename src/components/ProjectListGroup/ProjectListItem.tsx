@@ -45,6 +45,12 @@ const ProjectListItem = ({
         <p className='link-text'>
           <a href={link} target='_blank' rel='noreferrer'>
             {t('associated-projects-initiatives.link')}
+            <img
+              src={'../../../../images/arrow-up-right.svg'}
+              alt='img'
+              width={15}
+              height={15}
+            />
           </a>
           <i className='fa fa-external-link' aria-hidden='true' />
         </p>

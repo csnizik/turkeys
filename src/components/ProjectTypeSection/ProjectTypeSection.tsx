@@ -128,6 +128,12 @@ const ProjectTypeSection = ({
               rel='noreferrer'
             >
               {foundInitiative?.lciPageLinkText || nrcsLinkText}{' '}
+              <img
+                src={'../../../../images/arrow-up-right.svg'}
+                alt='img'
+                width={15}
+                height={15}
+              />
             </a>
             <i className='fas fa-external-link-alt' />
             <hr className='margin-bottom-2' />
