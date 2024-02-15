@@ -9,7 +9,7 @@ if [ $# -lt 2 ]; then
         exit 1
 fi
 
-declare -A envs=( ["dev"]="cpdi-dev.dev" ["test"]="cpdi-test.cert" ["uat"]="cpdi-uat.cert" ["stage"]="cpdi-stage.cert" ["prod"]="cpdi" )
+declare -A envs=( ["dev"]="cpdi-dev.dev" ["test"]="cpdi-test.cert" ["uat"]="cpdi-uat.cert" ["stage"]="cpdi-staging.cert" ["prod"]="cpdi" )
 
 #Lookup domain
 DOMAIN="${envs[$2]}"
@@ -35,7 +35,11 @@ cd /app/www/html/$DOMAIN
 echo "explode tarball"
 tar -xf /app/tmp/$DEPLOY_FILE
 echo "Setting API base URL"
-APIDOMAIN="${DOMAIN/-/api-}"
+if [ $2 = "stage" ]; then
+  APIDOMAIN="cpdiapi-stage.cert"
+else
+  APIDOMAIN="${DOMAIN/-/api-}"
+fi
 echo "Setting API base URL to https://$APIDOMAIN.sc.egov.usda.gov"
 grep -Rl 'https://cpdiapi-dev.dev.sc.egov.usda.gov/' . | xargs sed -i  "s_https://cpdiapi-dev.dev.sc.egov.usda.gov/_https://$APIDOMAIN.sc.egov.usda.gov/_g"
 echo "change owner of files to appadmin"
