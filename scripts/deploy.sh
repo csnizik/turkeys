@@ -37,9 +37,12 @@ tar -xf /app/tmp/$DEPLOY_FILE
 echo "Setting API base URL"
 if [ $2 = "stage" ]; then
   APIDOMAIN="cpdiapi-stage.cert"
+elif [ $2 = "prod" ]; then
+  APIDOMAIN="cpdiapi"
 else
   APIDOMAIN="${DOMAIN/-/api-}"
 fi
+
 echo "Setting API base URL to https://$APIDOMAIN.sc.egov.usda.gov"
 grep -Rl 'https://cpdiapi-dev.dev.sc.egov.usda.gov/' . | xargs sed -i  "s_https://cpdiapi-dev.dev.sc.egov.usda.gov/_https://$APIDOMAIN.sc.egov.usda.gov/_g"
 echo "change owner of files to appadmin"
